@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  /* Surface hierarchy (darkest to lightest) */
+  --surface-0: #060709;
+  --surface-1: #090b10;
+  --surface-2: #0c0e14;
+  --surface-3: #111420;
+  --surface-4: #181c28;
+
+  /* Accent palette */
+  --accent-cyan: #22d3ee;
+  --accent-emerald: #34d399;
+  --accent-rose: #f43f5e;
+  --accent-amber: #fbbf24;
+  --accent-purple: #a855f7;
+
+  /* Borders */
+  --border-subtle: rgba(63, 63, 70, 0.4);
+  --border-default: rgba(63, 63, 70, 0.7);
+
+  /* Typography */
+  --font-display: var(--font-jetbrains), "JetBrains Mono", "Fira Code", monospace;
+  --font-ui: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  /* Foreground */
+  --background: var(--surface-0);
+  --foreground: #e4e4e7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-display);
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--surface-0);
+  color: var(--foreground);
+  user-select: none;
+  font-family: var(--font-ui);
+}
+
+/* ── Sleek scrollbars ── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(34, 211, 238, 0.2);
+  color: #e4e4e7;
+}
+
+/* ── Focus ring ── */
+*:focus-visible {
+  outline: 1px solid rgba(34, 211, 238, 0.4);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Smooth global transitions ── */
+button, select, input, a {
+  transition: all 0.15s ease;
+}
