@@ -25,6 +25,11 @@ export default function SystemHeader() {
     { href: "/i2c", label: "I2C BUS", tag: "2-WIRE" },
     { href: "/spi", label: "SPI BUS", tag: "4-WIRE" },
     { href: "/uart", label: "UART SERIAL", tag: "RS232/TTL" },
+    { href: "/timers", label: "TIMERS/PWM", tag: "TIM2/TIM3" },
+    { href: "/adc", label: "ADC/DAC", tag: "ANALOG" },
+    { href: "/interrupts", label: "INTERRUPTS", tag: "NVIC/EXTI" },
+    { href: "/programming", label: "C PATTERNS", tag: "EMBEDDED" },
+    { href: "/learn", label: "📚 LEARN", tag: "ALL MODULES" },
   ];
 
   const getGuideTopic = (): ProtocolGuideType => {

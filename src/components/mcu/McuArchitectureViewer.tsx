@@ -1,13 +1,19 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import CpuPipelineViewer from "./CpuPipelineViewer";
+import ClockTreeViewer from "./ClockTreeViewer";
+import DmaDeepDiveViewer from "./DmaDeepDiveViewer";
 
 export type McuSubTab =
   | "bus_matrix_routing"
   | "routing_flow"
   | "gpio_schematic"
   | "block_diagram"
-  | "memory_map";
+  | "memory_map"
+  | "cpu_pipeline"
+  | "clock_tree"
+  | "dma_deep_dive";
 
 interface RoutingScenario {
   id: string;
@@ -313,6 +319,36 @@ export default function McuArchitectureViewer() {
             }`}
           >
             🗺️ 32-BIT MEMORY BUS & REGISTER MAP
+          </button>
+          <button
+            onClick={() => setActiveTab("cpu_pipeline")}
+            className={`px-3 py-1.5 text-[10px] font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+              activeTab === "cpu_pipeline"
+                ? "border-rose-400 text-rose-300 bg-[#121622]"
+                : "border-transparent text-zinc-500 hover:text-zinc-300"
+            }`}
+          >
+            🔬 CPU PIPELINE
+          </button>
+          <button
+            onClick={() => setActiveTab("clock_tree")}
+            className={`px-3 py-1.5 text-[10px] font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+              activeTab === "clock_tree"
+                ? "border-orange-400 text-orange-300 bg-[#121622]"
+                : "border-transparent text-zinc-500 hover:text-zinc-300"
+            }`}
+          >
+            🕐 CLOCK TREE
+          </button>
+          <button
+            onClick={() => setActiveTab("dma_deep_dive")}
+            className={`px-3 py-1.5 text-[10px] font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+              activeTab === "dma_deep_dive"
+                ? "border-fuchsia-400 text-fuchsia-300 bg-[#121622]"
+                : "border-transparent text-zinc-500 hover:text-zinc-300"
+            }`}
+          >
+            🚀 DMA DEEP-DIVE
           </button>
         </div>
 
@@ -1034,6 +1070,27 @@ export default function McuArchitectureViewer() {
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* ── Tab 6: CPU Pipeline ── */}
+      {activeTab === "cpu_pipeline" && (
+        <div className="flex-1 overflow-hidden">
+          <CpuPipelineViewer />
+        </div>
+      )}
+
+      {/* ── Tab 7: Clock Tree ── */}
+      {activeTab === "clock_tree" && (
+        <div className="flex-1 overflow-hidden">
+          <ClockTreeViewer />
+        </div>
+      )}
+
+      {/* ── Tab 8: DMA Deep-Dive ── */}
+      {activeTab === "dma_deep_dive" && (
+        <div className="flex-1 overflow-hidden">
+          <DmaDeepDiveViewer />
         </div>
       )}
     </div>
